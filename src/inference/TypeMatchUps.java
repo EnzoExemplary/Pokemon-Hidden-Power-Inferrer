@@ -1,7 +1,7 @@
 package inference;
 
 public class TypeMatchUps {
-    private static final Damage[] NORMAL = {
+    public static final Damage[] NORMAL = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -9,7 +9,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] FIRE = {
+    public static final Damage[] FIRE = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, .5),     new Damage(Type.WATER, .5),      new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 2),     new Damage(Type.ICE, 2),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 2),
@@ -17,7 +17,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 2),     new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] WATER = {
+    public static final Damage[] WATER = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 2),      new Damage(Type.WATER, .5),      new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, .5),    new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 2),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -25,7 +25,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 1),     new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] ELECTRIC = {
+    public static final Damage[] ELECTRIC = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 2),       new Damage(Type.ELECTRIC, .5),
         new Damage(Type.GRASS, .5),    new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 0),    new Damage(Type.FLYING, 2),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -33,7 +33,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 1),     new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] GRASS = {
+    public static final Damage[] GRASS = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, .5),     new Damage(Type.WATER, 2),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, .5),    new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, .5),
         new Damage(Type.GROUND, 2),    new Damage(Type.FLYING, .5),   new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, .5),
@@ -41,7 +41,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] ICE = {
+    public static final Damage[] ICE = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, .5),     new Damage(Type.WATER, .5),      new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 2),     new Damage(Type.ICE, .5),      new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 2),    new Damage(Type.FLYING, 2),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -49,7 +49,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 1)
     };
     
-    private static final Damage[] FIGHTING = {
+    public static final Damage[] FIGHTING = {
         new Damage(Type.NORMAL, 2),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 2),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, .5),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, .5),   new Damage(Type.PSYCHIC, .5),    new Damage(Type.BUG, .5),
@@ -57,7 +57,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 2),     new Damage(Type.FAIRY, .5)
     };
 
-    private static final Damage[] POISON = {
+    public static final Damage[] POISON = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 2),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, .5),
         new Damage(Type.GROUND, .5),   new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -65,7 +65,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 1),     new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] GROUND = {
+    public static final Damage[] GROUND = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 2),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 2),
         new Damage(Type.GRASS, .5),    new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 2),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 0),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, .5),
@@ -73,7 +73,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 2),     new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] FLYING = {
+    public static final Damage[] FLYING = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, .5),
         new Damage(Type.GRASS, 2),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 2),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 2),
@@ -81,7 +81,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] PSYCHIC = {
+    public static final Damage[] PSYCHIC = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 2),    new Damage(Type.POISON, 2),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, .5),    new Damage(Type.BUG, 1),
@@ -89,7 +89,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] BUG = {
+    public static final Damage[] BUG = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, .5),     new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 2),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, .5),   new Damage(Type.POISON, .5),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, .5),   new Damage(Type.PSYCHIC, 2),     new Damage(Type.BUG, 1),
@@ -97,7 +97,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, .5)
     };
 
-    private static final Damage[] ROCK = {
+    public static final Damage[] ROCK = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 2),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 2),       new Damage(Type.FIGHTING, .5),   new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, .5),   new Damage(Type.FLYING, 2),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 2),
@@ -105,7 +105,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] GHOST = {
+    public static final Damage[] GHOST = {
         new Damage(Type.NORMAL, 0),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 2),     new Damage(Type.BUG, 1),
@@ -113,7 +113,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 1),     new Damage(Type.FAIRY, 1)
     };
 
-    private static final Damage[] DRAGON = {
+    public static final Damage[] DRAGON = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -121,7 +121,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 0)
     };
 
-    private static final Damage[] DARK = {
+    public static final Damage[] DARK = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, 1),      new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, .5),   new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 2),     new Damage(Type.BUG, 1),
@@ -129,7 +129,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, 1),     new Damage(Type.FAIRY, .5)
     };
 
-    private static final Damage[] STEEL = {
+    public static final Damage[] STEEL = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, .5),     new Damage(Type.WATER, .5),      new Damage(Type.ELECTRIC, .5),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 2),       new Damage(Type.FIGHTING, 1),    new Damage(Type.POISON, 1),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
@@ -137,7 +137,7 @@ public class TypeMatchUps {
         new Damage(Type.STEEL, .5),    new Damage(Type.FAIRY, 2)
     };
 
-    private static final Damage[] FAIRY = {
+    public static final Damage[] FAIRY = {
         new Damage(Type.NORMAL, 1),    new Damage(Type.FIRE, .5),     new Damage(Type.WATER, 1),       new Damage(Type.ELECTRIC, 1),
         new Damage(Type.GRASS, 1),     new Damage(Type.ICE, 1),       new Damage(Type.FIGHTING, 2),    new Damage(Type.POISON, .5),
         new Damage(Type.GROUND, 1),    new Damage(Type.FLYING, 1),    new Damage(Type.PSYCHIC, 1),     new Damage(Type.BUG, 1),
