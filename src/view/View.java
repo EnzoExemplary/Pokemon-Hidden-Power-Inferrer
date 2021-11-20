@@ -1,9 +1,11 @@
 package view;
 
 import inference.Type;
+import main.Main;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class View {
     private Scanner scanner;
@@ -20,14 +22,16 @@ public class View {
         boolean dualType = checkDualType();
 
         firstType = checkType(false);
+        String secondTypePrint = "";
         if(dualType){  
             secondType = checkType(true);
+            secondTypePrint = ", " + secondType;
         }else{
             secondType = null;
         }
 
-        System.out.println("Type 1: " + firstType);
-        System.out.println("Type 2: " + secondType);
+        System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
+
         
 
     }
@@ -56,7 +60,8 @@ public class View {
                 }
 
             }catch(InputMismatchException e){
-                System.out.println("Input value invalid, please enter again");
+                System.out.println(e.getMessage() + "\n");
+                Main.pause();
                 scanner.nextLine();
             }
         }
@@ -84,6 +89,8 @@ public class View {
                     
                     if(value < 0 || value >= numTypes){
                         throw new InputMismatchException("Input value must from 0 to " + (numTypes - 1));
+                    }else if(isSecondType && value == firstType.valueOf()){
+                        throw new InputMismatchException("Second type cannot be same as the first");
                     }else{
                         type = Type.values()[value];
                     }
@@ -94,18 +101,20 @@ public class View {
                 }
 
             }catch(InputMismatchException e){
-                System.out.println("Input value invalid, please enter again");
+                System.out.println(e.getMessage() + "\n");
+                Main.pause();
                 scanner.nextLine();
             }
         }       
 
         return type;
     }
+    
     private void printTypeOptions(){
         Type[] types = Type.values();
 
         for(Type type : types){
-            System.out.printf(("%d. %s\n"), type.valueOf(), type.toString());
+            System.out.printf(("%d. %s\n"), type.valueOf(), type);
         }
 
     }
