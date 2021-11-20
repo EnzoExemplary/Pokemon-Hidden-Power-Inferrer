@@ -1,6 +1,7 @@
 package view;
 
 import inference.Type;
+import inference.Inferrer;
 import main.Main;
 
 import java.util.InputMismatchException;
@@ -9,18 +10,23 @@ import java.util.Scanner;
 
 public class View {
     private Scanner scanner;
+    private Inferrer inferrer;
     private Type firstType;
     private Type secondType;
 
+
     public View(){
         scanner = new Scanner(System.in);
+        inferrer = new Inferrer();
         Run();
         scanner.close();
     }
 
     private void Run(){
+        // Get input for whether opposing pokemon is mono/dual type
         boolean dualType = checkDualType();
 
+        // Get inputs for opposing pokemon's type(s)
         firstType = checkType(false);
         String secondTypePrint = "";
         if(dualType){  
@@ -30,7 +36,10 @@ public class View {
             secondType = null;
         }
 
+        // Print out opposing pokemon's type(s)
         System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
+
+        inferrer.infer(firstType, secondType);
 
         
 

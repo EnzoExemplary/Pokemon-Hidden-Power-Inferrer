@@ -1,8 +1,8 @@
 package inference;
 
 public class Damage {
-    Type defendingType;
-    double damage;
+    public Type defendingType;
+    public double damage;
     
     public Damage(Type defendingType, double damage){
         this.defendingType = defendingType;
