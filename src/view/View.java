@@ -6,7 +6,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class View {
-    Scanner scanner;;
+    private Scanner scanner;
+    private Type firstType;
+    private Type secondType;
 
     public View(){
         scanner = new Scanner(System.in);
@@ -16,11 +18,16 @@ public class View {
 
     private void Run(){
         boolean dualType = checkDualType();
-        System.out.println("Is dualtype: " + dualType);
-        // printTypeOptions();
 
+        firstType = checkType(false);
+        if(dualType){  
+            secondType = checkType(true);
+        }else{
+            secondType = null;
+        }
 
-
+        System.out.println("Type 1: " + firstType);
+        System.out.println("Type 2: " + secondType);
         
 
     }
@@ -57,6 +64,43 @@ public class View {
         return dualType;
     }
 
+    private Type checkType(boolean isSecondType){
+        Type type = null;
+        int numTypes = Type.values().length;
+
+        String selection = "first";
+        if(isSecondType){
+            selection = "second";
+        }
+
+        boolean noSelection = true;
+        while(noSelection){
+            try{
+                System.out.println("Select the opposing Pokemon's " + selection + " type:");
+                printTypeOptions();
+
+                if(scanner.hasNextInt()){
+                    int value = scanner.nextInt();
+                    
+                    if(value < 0 || value >= numTypes){
+                        throw new InputMismatchException("Input value must from 0 to " + (numTypes - 1));
+                    }else{
+                        type = Type.values()[value];
+                    }
+
+                    noSelection = false;
+                }else{
+                    throw new InputMismatchException("Input invalid, must be a number");
+                }
+
+            }catch(InputMismatchException e){
+                System.out.println("Input value invalid, please enter again");
+                scanner.nextLine();
+            }
+        }       
+
+        return type;
+    }
     private void printTypeOptions(){
         Type[] types = Type.values();
 
