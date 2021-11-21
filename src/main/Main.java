@@ -8,7 +8,8 @@ public class Main {
     public static final int PAUSE_TIME_SEC = 2;
 
     public static void main(String[] args) {
-        View view = new View();
+        new View();
+        System.exit(0);
     }
 
     public static void pause(){

@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Inferrer {
     Set<Type> possibleTypes;
-    Map<Type, Damage[]> weaknesses;
+    Map<Type, Weakness[]> weaknesses;
 
 
     public Inferrer(){
@@ -42,7 +42,7 @@ public class Inferrer {
     }
 
     public void infer(Type firstType, Type secondType){
-        Damage[] typeWeaknesses = {};
+        Weakness[] typeWeaknesses = {};
 
         if(secondType == null){
             typeWeaknesses = weaknesses.get(firstType);
@@ -50,27 +50,27 @@ public class Inferrer {
             typeWeaknesses = getDualWeaknesses(firstType, secondType);
         }
 
-        for(Damage weakness : typeWeaknesses){
+        for(Weakness weakness : typeWeaknesses){
             System.out.println(weakness);
         }
         
     }
 
-    public Damage[] getDualWeaknesses(Type firstType, Type secondType){
-        Damage[] dualWeaknesses = {};
+    public Weakness[] getDualWeaknesses(Type firstType, Type secondType){
+        Weakness[] dualWeaknesses = {};
 
         if(firstType != null && secondType != null){
-            Damage[] firstTypeWeaknesses = weaknesses.get(firstType);
-            Damage[] secondTypeWeaknesses = weaknesses.get(secondType);
+            Weakness[] firstTypeWeaknesses = weaknesses.get(firstType);
+            Weakness[] secondTypeWeaknesses = weaknesses.get(secondType);
 
             if(firstTypeWeaknesses.length == secondTypeWeaknesses.length){
-                dualWeaknesses = new Damage[firstTypeWeaknesses.length];
+                dualWeaknesses = new Weakness[firstTypeWeaknesses.length];
 
                 for(int i = 0; i < dualWeaknesses.length; i++){
                     Type type = firstTypeWeaknesses[i].attackingType;
-                    double firstDamage = firstTypeWeaknesses[i].damage;
-                    double secondDamage = secondTypeWeaknesses[i].damage;
-                    dualWeaknesses[i] = new Damage(type, firstDamage*secondDamage);
+                    double firstWeakness = firstTypeWeaknesses[i].damage;
+                    double secondWeakness = secondTypeWeaknesses[i].damage;
+                    dualWeaknesses[i] = new Weakness(type, firstWeakness*secondWeakness);
                 }
             }
 
