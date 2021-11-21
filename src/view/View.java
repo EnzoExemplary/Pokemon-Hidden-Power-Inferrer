@@ -1,6 +1,7 @@
 package view;
 
 import inference.Type;
+import inference.Effectiveness;
 import inference.Inferrer;
 import main.Main;
 
@@ -45,8 +46,10 @@ public class View {
         System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
         Main.pause(true);
 
-
-
+        // Get input for how effective the hidden power was
+        Effectiveness effectiveness = getHiddenPowerEffectiveness();
+        System.out.println("Hidden power's result: " + effectiveness.label);
+        Main.pause(true);
 
         inferrer.infer(firstType, secondType);
 
@@ -134,6 +137,45 @@ public class View {
         for(Type type : types){
             System.out.printf(("%d. %s\n"), type.valueOf(), type);
         }
+    }
 
+    private Effectiveness getHiddenPowerEffectiveness(){
+        Effectiveness effectiveness = null;
+
+        boolean noSelection = true;
+        while(noSelection){
+            try{
+                System.out.println("Select hidden power's effectiveness against opposing pokemon");
+                printEffectivenessOptitons();
+                if(scanner.hasNextInt()){
+                    int value = scanner.nextInt();
+                    
+                    if(value < 0 || value >= Effectiveness.values().length){
+                        throw new InputMismatchException("Input value must from 0 to " + (Effectiveness.values().length - 1));
+                    }else{
+                        effectiveness = Effectiveness.values()[value];
+                    }
+
+                    noSelection = false;
+                }else{
+                    throw new InputMismatchException("Input invalid, must be a number");
+                }
+
+            }catch(InputMismatchException e){
+                System.out.println(e.getMessage() + "\n");
+                Main.pause(false);
+                scanner.nextLine();
+            }
+        }
+
+        return effectiveness;
+    }
+
+    private void printEffectivenessOptitons(){
+        Effectiveness[] effectiveOptions = Effectiveness.values();
+
+        for(Effectiveness effectiveOption : effectiveOptions){
+            System.out.printf(("%d. %s\n"), effectiveOption.value, effectiveOption.label);
+        }
     }
 }
