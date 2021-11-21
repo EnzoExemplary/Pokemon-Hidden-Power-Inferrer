@@ -36,28 +36,32 @@ public class View {
             // Get input for whether opposing pokemon is mono/dual type
             boolean dualType = checkDualType();
             Main.pause(true);
+            System.out.println();
 
             // Get inputs for the opposing pokemon's first type
             firstType = checkType(false);
             Main.pause(true);
+            System.out.println();
 
             // Get inputs for the opposing pokemon's second type (if any)
             String secondTypePrint = "";
             if(dualType){  
                 secondType = checkType(true);
                 Main.pause(true);
+                System.out.println();
                 secondTypePrint = ", " + secondType;
             }else{
                 secondType = null;
             }
 
             // Print out opposing pokemon's type(s)
-            System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
+            System.out.printf("Opposing pokemon is %s%s type\n\n", firstType, secondTypePrint);
             Main.pause(true);
 
             // Get input for how effective the hidden power was
             Effectiveness effectiveness = getHiddenPowerEffectiveness();
             Main.pause(true);
+            System.out.println();
 
             inferrer.infer(firstType, secondType, effectiveness);
             System.out.println("Hidden power may be any of the following types:");

@@ -51,16 +51,8 @@ public class Inferrer {
             typeWeaknesses = getDualWeaknesses(firstType, secondType);
         }
 
-        for(Weakness weakness : typeWeaknesses){
-            System.out.println(weakness);
-        }
-        Main.pause(true);
-        System.out.println();
-
         Set<Type> newPossibleTypes = getPossibleTypes(typeWeaknesses, effectiveness);
         possibleTypes.retainAll(newPossibleTypes);
-
-
     }
 
     public Weakness[] getDualWeaknesses(Type firstType, Type secondType){
@@ -85,7 +77,7 @@ public class Inferrer {
 
         return dualWeaknesses;
     }
-    
+
     public Set<Type> getPossibleTypes(Weakness[] weaknesses, Effectiveness effectiveness){
         Set<Type> newPossibleTypes = new HashSet<>();
 
