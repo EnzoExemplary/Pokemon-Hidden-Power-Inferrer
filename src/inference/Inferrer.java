@@ -49,13 +49,30 @@ public class Inferrer {
         }else{
             typeWeaknesses = getDualWeaknesses(firstType, secondType);
         }
+
+        for(Damage weakness : typeWeaknesses){
+            System.out.println(weakness);
+        }
+        
     }
 
     public Damage[] getDualWeaknesses(Type firstType, Type secondType){
         Damage[] dualWeaknesses = {};
 
         if(firstType != null && secondType != null){
+            Damage[] firstTypeWeaknesses = weaknesses.get(firstType);
+            Damage[] secondTypeWeaknesses = weaknesses.get(secondType);
 
+            if(firstTypeWeaknesses.length == secondTypeWeaknesses.length){
+                dualWeaknesses = new Damage[firstTypeWeaknesses.length];
+
+                for(int i = 0; i < dualWeaknesses.length; i++){
+                    Type type = firstTypeWeaknesses[i].attackingType;
+                    double firstDamage = firstTypeWeaknesses[i].damage;
+                    double secondDamage = secondTypeWeaknesses[i].damage;
+                    dualWeaknesses[i] = new Damage(type, firstDamage*secondDamage);
+                }
+            }
 
         }
 

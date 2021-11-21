@@ -8,4 +8,8 @@ public class Damage {
         this.attackingType = attackingType;
         this.damage = damage;
     }
+
+    public String toString(){
+        return String.format("%s deals %.1f", attackingType, damage);
+    }
 }
