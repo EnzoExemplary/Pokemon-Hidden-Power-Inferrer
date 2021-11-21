@@ -1,11 +1,11 @@
 package inference;
 
 public class Damage {
-    public Type defendingType;
+    public Type attackingType;
     public double damage;
     
-    public Damage(Type defendingType, double damage){
-        this.defendingType = defendingType;
+    public Damage(Type attackingType, double damage){
+        this.attackingType = attackingType;
         this.damage = damage;
     }
 }

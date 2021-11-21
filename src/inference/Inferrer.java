@@ -7,7 +7,7 @@ import java.util.Set;
 
 public class Inferrer {
     Set<Type> possibleTypes;
-    Map<Type, Damage[]> matchups;
+    Map<Type, Damage[]> weaknesses;
 
 
     public Inferrer(){
@@ -19,29 +19,46 @@ public class Inferrer {
             possibleTypes.add(type);
         }
 
-        matchups = new HashMap<>(){{
-            put(Type.NORMAL, TypeMatchUps.NORMAL);
-            put(Type.FIRE, TypeMatchUps.FIRE);
-            put(Type.WATER, TypeMatchUps.WATER);
-            put(Type.ELECTRIC, TypeMatchUps.ELECTRIC);
-            put(Type.GRASS, TypeMatchUps.GRASS);
-            put(Type.ICE, TypeMatchUps.ICE);
-            put(Type.FIGHTING, TypeMatchUps.FIGHTING);
-            put(Type.POISON, TypeMatchUps.POISON);
-            put(Type.GROUND, TypeMatchUps.GROUND);
-            put(Type.FLYING, TypeMatchUps.FLYING);
-            put(Type.PSYCHIC, TypeMatchUps.PSYCHIC);
-            put(Type.BUG, TypeMatchUps.BUG);
-            put(Type.ROCK, TypeMatchUps.ROCK);
-            put(Type.GHOST, TypeMatchUps.GHOST);
-            put(Type.DRAGON, TypeMatchUps.DRAGON);
-            put(Type.DARK, TypeMatchUps.DARK);
-            put(Type.STEEL, TypeMatchUps.STEEL);
-            put(Type.FAIRY, TypeMatchUps.FAIRY);
+        weaknesses = new HashMap<>(){{
+            put(Type.NORMAL, TypeWeaknesses.NORMAL);
+            put(Type.FIRE, TypeWeaknesses.FIRE);
+            put(Type.WATER, TypeWeaknesses.WATER);
+            put(Type.ELECTRIC, TypeWeaknesses.ELECTRIC);
+            put(Type.GRASS, TypeWeaknesses.GRASS);
+            put(Type.ICE, TypeWeaknesses.ICE);
+            put(Type.FIGHTING, TypeWeaknesses.FIGHTING);
+            put(Type.POISON, TypeWeaknesses.POISON);
+            put(Type.GROUND, TypeWeaknesses.GROUND);
+            put(Type.FLYING, TypeWeaknesses.FLYING);
+            put(Type.PSYCHIC, TypeWeaknesses.PSYCHIC);
+            put(Type.BUG, TypeWeaknesses.BUG);
+            put(Type.ROCK, TypeWeaknesses.ROCK);
+            put(Type.GHOST, TypeWeaknesses.GHOST);
+            put(Type.DRAGON, TypeWeaknesses.DRAGON);
+            put(Type.DARK, TypeWeaknesses.DARK);
+            put(Type.STEEL, TypeWeaknesses.STEEL);
+            put(Type.FAIRY, TypeWeaknesses.FAIRY);
         }};
     }
 
     public void infer(Type firstType, Type secondType){
-        
+        Damage[] typeWeaknesses = {};
+
+        if(secondType == null){
+            typeWeaknesses = weaknesses.get(firstType);
+        }else{
+            typeWeaknesses = getDualWeaknesses(firstType, secondType);
+        }
+    }
+
+    public Damage[] getDualWeaknesses(Type firstType, Type secondType){
+        Damage[] dualWeaknesses = {};
+
+        if(firstType != null && secondType != null){
+
+
+        }
+
+        return dualWeaknesses;
     }
 }
