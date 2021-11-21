@@ -26,11 +26,15 @@ public class View {
         // Get input for whether opposing pokemon is mono/dual type
         boolean dualType = checkDualType();
 
-        // Get inputs for opposing pokemon's type(s)
+        // Get inputs for the opposing pokemon's first type
         firstType = checkType(false);
+        Main.pause(false);
+
+        // Get inputs for the opposing pokemon's second type (if any)
         String secondTypePrint = "";
         if(dualType){  
             secondType = checkType(true);
+            Main.pause(false);
             secondTypePrint = ", " + secondType;
         }else{
             secondType = null;
@@ -38,6 +42,10 @@ public class View {
 
         // Print out opposing pokemon's type(s)
         System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
+        Main.pause(false);
+
+
+
 
         inferrer.infer(firstType, secondType);
 
@@ -70,7 +78,7 @@ public class View {
 
             }catch(InputMismatchException e){
                 System.out.println(e.getMessage() + "\n");
-                Main.pause();
+                Main.pause(true);
                 scanner.nextLine();
             }
         }
@@ -111,7 +119,7 @@ public class View {
 
             }catch(InputMismatchException e){
                 System.out.println(e.getMessage() + "\n");
-                Main.pause();
+                Main.pause(true);
                 scanner.nextLine();
             }
         }       
