@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import main.Main;
+
 public class Inferrer {
     Set<Type> possibleTypes;
     Map<Type, Weakness[]> weaknesses;
@@ -41,7 +43,7 @@ public class Inferrer {
         }};
     }
 
-    public void infer(Type firstType, Type secondType){
+    public void infer(Type firstType, Type secondType, Effectiveness effectiveness){
         Weakness[] typeWeaknesses = {};
 
         if(secondType == null){
@@ -53,7 +55,16 @@ public class Inferrer {
         for(Weakness weakness : typeWeaknesses){
             System.out.println(weakness);
         }
-        
+        Main.pause(true);
+        System.out.println();
+
+        Set<Type> newPossibleTypes = getPossibleTypes(typeWeaknesses, effectiveness);
+        possibleTypes.retainAll(newPossibleTypes);
+
+        System.out.println("Hidden power type could be any of the following types:");
+        for(Type type : possibleTypes){
+            System.out.println(type);
+        }
     }
 
     public Weakness[] getDualWeaknesses(Type firstType, Type secondType){
@@ -77,5 +88,29 @@ public class Inferrer {
         }
 
         return dualWeaknesses;
+    }
+
+    public Set<Type> getPossibleTypes(Weakness[] weaknesses, Effectiveness effectiveness){
+        Set<Type> newPossibleTypes = new HashSet<>();
+
+        if(effectiveness == Effectiveness.NO_EFFECT){
+            for(Weakness weakness : weaknesses){
+                if (weakness.damage == 0) newPossibleTypes.add(weakness.attackingType);
+            }
+        }else if(effectiveness == Effectiveness.NOT_VERY){
+            for(Weakness weakness : weaknesses){
+                if (weakness.damage > 0 && weakness.damage < 1) newPossibleTypes.add(weakness.attackingType);
+            }
+        }else if(effectiveness == Effectiveness.NORMAL){
+            for(Weakness weakness : weaknesses){
+                if (weakness.damage == 1) newPossibleTypes.add(weakness.attackingType);
+            }
+        }else if(effectiveness == Effectiveness.SUPER){
+            for(Weakness weakness : weaknesses){
+                if (weakness.damage >= 2) newPossibleTypes.add(weakness.attackingType);
+            }
+        }
+
+        return newPossibleTypes;
     }
 }

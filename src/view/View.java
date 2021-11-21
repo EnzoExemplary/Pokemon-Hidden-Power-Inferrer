@@ -51,7 +51,7 @@ public class View {
         System.out.println("Hidden power's result: " + effectiveness.label);
         Main.pause(true);
 
-        inferrer.infer(firstType, secondType);
+        inferrer.infer(firstType, secondType, effectiveness);
 
         
 
