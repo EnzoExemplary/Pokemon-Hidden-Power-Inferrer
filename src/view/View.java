@@ -19,42 +19,64 @@ public class View {
     public View(){
         scanner = new Scanner(System.in);
         inferrer = new Inferrer();
-        Run();
+        
+        try{
+            Run();
+        }catch(Exception e){
+            scanner.close();
+            e.printStackTrace();
+            System.exit(1);
+        }
+
         scanner.close();
     }
 
-    private void Run(){
-        // Get input for whether opposing pokemon is mono/dual type
-        boolean dualType = checkDualType();
-        Main.pause(true);
-
-        // Get inputs for the opposing pokemon's first type
-        firstType = checkType(false);
-        Main.pause(true);
-
-        // Get inputs for the opposing pokemon's second type (if any)
-        String secondTypePrint = "";
-        if(dualType){  
-            secondType = checkType(true);
+    private void Run() throws Exception{
+        while(inferrer.possibleTypes.size() > 1){
+            // Get input for whether opposing pokemon is mono/dual type
+            boolean dualType = checkDualType();
             Main.pause(true);
-            secondTypePrint = ", " + secondType;
-        }else{
+
+            // Get inputs for the opposing pokemon's first type
+            firstType = checkType(false);
+            Main.pause(true);
+
+            // Get inputs for the opposing pokemon's second type (if any)
+            String secondTypePrint = "";
+            if(dualType){  
+                secondType = checkType(true);
+                Main.pause(true);
+                secondTypePrint = ", " + secondType;
+            }else{
+                secondType = null;
+            }
+
+            // Print out opposing pokemon's type(s)
+            System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
+            Main.pause(true);
+
+            // Get input for how effective the hidden power was
+            Effectiveness effectiveness = getHiddenPowerEffectiveness();
+            Main.pause(true);
+
+            inferrer.infer(firstType, secondType, effectiveness);
+            System.out.println("Hidden power may be any of the following types:");
+            for(Type type : inferrer.possibleTypes){
+                System.out.println(type);
+            }
+            System.out.println();
+            firstType = null;
             secondType = null;
         }
 
-        // Print out opposing pokemon's type(s)
-        System.out.printf("\nOpposing pokemon is %s%s type\n", firstType, secondTypePrint);
-        Main.pause(true);
-
-        // Get input for how effective the hidden power was
-        Effectiveness effectiveness = getHiddenPowerEffectiveness();
-        System.out.println("Hidden power's result: " + effectiveness.label);
-        Main.pause(true);
-
-        inferrer.infer(firstType, secondType, effectiveness);
-
-        
-
+        int numPossibilities = inferrer.possibleTypes.size();
+        if(numPossibilities == 1){
+            System.out.println("Hidden power type is: " + inferrer.possibleTypes.iterator().next());
+        }else if(numPossibilities == 0){
+            System.out.println("No type could be determined, please ensure inputs were correct");
+        }else{
+            throw new Exception(String.format("Unexpected error, execution finished with %d types leftover", numPossibilities));
+        }
     }
 
     private boolean checkDualType(){

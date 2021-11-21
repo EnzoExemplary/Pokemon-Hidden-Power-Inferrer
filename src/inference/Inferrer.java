@@ -8,9 +8,8 @@ import java.util.Set;
 import main.Main;
 
 public class Inferrer {
-    Set<Type> possibleTypes;
-    Map<Type, Weakness[]> weaknesses;
-
+    public Set<Type> possibleTypes;
+    private Map<Type, Weakness[]> weaknesses;
 
     public Inferrer(){
         possibleTypes = new HashSet<>();
@@ -61,10 +60,7 @@ public class Inferrer {
         Set<Type> newPossibleTypes = getPossibleTypes(typeWeaknesses, effectiveness);
         possibleTypes.retainAll(newPossibleTypes);
 
-        System.out.println("Hidden power type could be any of the following types:");
-        for(Type type : possibleTypes){
-            System.out.println(type);
-        }
+
     }
 
     public Weakness[] getDualWeaknesses(Type firstType, Type secondType){
@@ -89,7 +85,7 @@ public class Inferrer {
 
         return dualWeaknesses;
     }
-
+    
     public Set<Type> getPossibleTypes(Weakness[] weaknesses, Effectiveness effectiveness){
         Set<Type> newPossibleTypes = new HashSet<>();
 
